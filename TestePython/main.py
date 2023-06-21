@@ -10,13 +10,13 @@ def calcular_fatorial(n):
         result *= i
     return result
 
-# Função que executada para cada conexão
+# Função que e executada para cada conexão
 async def handle_connection(websocket, path):
     print("Conexão estabelecida com sucesso")
 
     try:
         async for message in websocket:
-            if message.startswith("fatorial: "):  # Verifica se a mensagem inicia com fatorial : não esquecer de colocar espaço após o :
+            if message.startswith("fatorial: "):  # Verifica se a mensagem inicia com fatorial : não esquecer de colocar espaço após o : .
                 number = int(message.split(":")[1])
                 result = calcular_fatorial(number)
                 await websocket.send(f"O fatorial de {number} é {result}")
